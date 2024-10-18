@@ -1,0 +1,501 @@
+.blog-html-page-pc {
+    padding: 20px;
+    border: 1px solid #ccc;
+    .line-number {
+        color: #fff;
+        width: 48px;
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: #555;
+        width: 100%;
+        margin: 0px 0;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+    h2 {
+        font-size: 22px;
+        line-height: 40px;
+        line-height: 40px;
+    }
+    h3 {
+        font-size: 19px;
+        line-height: 35px;
+        line-height: 35px;
+    }
+    h4 {
+        font-size: 16px;
+    }
+
+    h5 {
+        font-size: 16px;
+    }
+    h6 {
+        font-size: 16px;
+    }
+
+    ul {
+        list-style-type: disc !important;
+        list-style-position: inside;
+
+        li {
+            padding-left: 10px;
+            line-height: 30px;
+            list-style-type: disc !important;
+            list-style-position: inside;
+        }
+    }
+
+    ol {
+        list-style-type: ecimal !important;
+        list-style-position: inside;
+
+        li {
+            padding-left: 10px;
+            line-height: 30px;
+            list-style-type: ecimal !important;
+            list-style-position: inside;
+        }
+    }
+
+    ul {
+        list-style-type: disc !important;
+    }
+
+    ol {
+        list-style-type: decimal !important;
+    }
+
+    li {
+        list-style: inherit !important;
+    }
+
+    img {
+        height: 100%;
+        max-width: 960px;
+        display: block;
+        margin: 5px 0;
+        cursor: zoom-in;
+        opacity: 0;
+        transition: opacity 1s;
+    }
+
+    p {
+        font-size: 16px;
+        line-height: 30px;
+    }
+
+    a {
+        color: $primary;
+        font-weight: 550;
+        font-size: 18px;
+    }
+    table,
+    th,
+    td {
+        border: 1px solid #ccc;
+    }
+
+    table {
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        // text-align: center;
+        padding: 8px 15px;
+        color: #555;
+    }
+
+    .language-js {
+        display: block;
+        overflow-x: auto;
+    }
+
+    .hljs {
+        display: block;
+        overflow-x: auto;
+    }
+
+    pre {
+        border-radius: 4px;
+        overflow: hidden;
+        background-color: #282c34;
+        margin: 5px 0;
+        position: relative;
+        display: flex;
+        padding-left: 40px;
+        // 自定义滚动条
+        &::-webkit-scrollbar {
+            width: 6px;
+        }
+        &::-webkit-scrollbar-thumb {
+            border-radius: 3px;
+            background: #ccc;
+        }
+        &::after {
+            // 代码与行号的分割线
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            height: calc(100% - 56px);
+            width: 1px;
+            z-index: 9;
+            background: linear-gradient(to bottom, transparent 0%, transparent 50%, #5c677b 50%);
+            background-size: 1px 12px;
+            background-repeat: repeat-y;
+        }
+        .lang-da {
+            color: #fff;
+        }
+        &:has(.lang-da) {
+            height: 40px;
+            .line-number-div {
+                display: none;
+            }
+        }
+        &:has(.show-da) {
+            height: auto;
+        }
+
+        // 行
+        ul {
+            width: 40px;
+            position: absolute;
+            top: 40px;
+            left: 0;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            li {
+                height: 30px;
+                line-height: 30px;
+                text-align: right;
+                padding-right: 10px;
+                color: #ccc;
+            }
+        }
+
+        // 查看答案
+        .da-btn {
+            position: absolute;
+            top: 0;
+            left: 10px;
+            height: 40px;
+            line-height: 40px;
+            color: $primary;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        // 仿苹果
+        .line-number-div {
+            position: absolute;
+            top: 0;
+            left: 10px;
+            width: 50px;
+            height: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .line-number-div-item {
+                height: 10px;
+                width: 10px;
+                border-radius: 50%;
+                &:nth-of-type(1) {
+                    background-color: #ff5f57;
+                }
+                &:nth-of-type(2) {
+                    background-color: #ffbd2e;
+                }
+                &:nth-of-type(3) {
+                    background-color: #27c93f;
+                }
+            }
+        }
+        code {
+            width: 912px;
+            padding-left: 10px !important;
+            display: block;
+            border-radius: 5px;
+            font-size: 16px;
+            line-height: 30px;
+            padding-top: 40px !important;
+            .copy-button {
+                position: absolute;
+                right: 10px;
+                top: 15px;
+                padding: 3px 5px;
+                background-color: #666;
+                color: #fff;
+                border-radius: 3px;
+                cursor: pointer;
+            }
+
+            span {
+                line-height: 30px;
+            }
+        }
+    }
+
+    strong {
+        color: red;
+        font-weight: 500;
+    }
+    // br {
+    //     display: none;
+    //   }
+}
+
+.blog-html-page-mobile,
+.kl-preview-code-mask {
+    padding: 20px 0;
+    color: #555;
+    font-weight: 400;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: #333;
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+    h2 {
+        font-size: 18px;
+        line-height: 30px;
+        line-height: 30px;
+    }
+    h3 {
+        font-size: 16px;
+        line-height: 25px;
+        line-height: 25px;
+    }
+    h4,
+    h5,
+    h6 {
+        font-size: 14px;
+    }
+
+    ul {
+        list-style-type: disc !important;
+        list-style-position: inside;
+
+        li {
+            padding-left: 10px;
+            line-height: 30px;
+            list-style-type: disc !important;
+            list-style-position: inside;
+        }
+    }
+
+    ol {
+        list-style-type: ecimal !important;
+        list-style-position: inside;
+
+        li {
+            padding-left: 10px;
+            line-height: 30px;
+            list-style-type: ecimal !important;
+            list-style-position: inside;
+        }
+    }
+
+    ul {
+        list-style-type: disc !important;
+    }
+
+    ol {
+        list-style-type: decimal !important;
+    }
+
+    li {
+        list-style: inherit !important;
+    }
+
+    img {
+        max-width: 100%;
+        display: block;
+        margin: 5px auto;
+    }
+
+    p {
+        max-width: 100%;
+        overflow-y: auto;
+        white-space: wrap;
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    a {
+        color: $primary;
+        font-weight: 500;
+        font-size: 14px;
+    }
+    table,
+    th,
+    td {
+        border: 1px solid #ccc;
+    }
+
+    table {
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        // text-align: center;
+        padding: 6px 10px;
+        color: #555;
+        font-size: 14px;
+    }
+
+    .language-js {
+        display: block;
+        overflow-x: auto;
+        color: #333;
+        background: #f8f8f8;
+    }
+
+    .hljs {
+        display: block;
+        overflow-x: auto;
+    }
+
+    pre {
+        border-radius: 4px;
+        overflow: hidden;
+        background-color: #282c34;
+        position: relative;
+        display: flex;
+        padding-left: 40px;
+        margin: 5px 0;
+        &::after {
+            // 代码与行号的分割线
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            height: calc(100% - 56px);
+            width: 1px;
+            z-index: 9;
+            background: linear-gradient(to bottom, transparent 0%, transparent 50%, #5c677b 50%);
+            background-size: 1px 12px;
+            background-repeat: repeat-y;
+        }
+
+        .lang-da {
+            color: #fff;
+        }
+        &:has(.lang-da) {
+            .pos-icon-full-screen {
+                display: none;
+            }
+            height: 40px;
+            .line-number-div {
+                display: none;
+            }
+        }
+        &:has(.show-da) {
+            height: auto;
+            .lang-da {
+                overflow-x: auto;
+            }
+        }
+        // 查看答案
+        .da-btn {
+            position: absolute;
+            top: 0;
+            left: 10px;
+            height: 40px;
+            line-height: 40px;
+            color: $primary;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        // 行
+        ul {
+            width: 40px;
+            position: absolute;
+            top: 40px;
+            left: 0;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            li {
+                height: 30px;
+                line-height: 30px;
+                text-align: right;
+                padding-right: 10px;
+                color: #ccc;
+            }
+        }
+
+        // 仿苹果
+        .line-number-div {
+            position: absolute;
+            top: 0;
+            left: 10px;
+            width: 50px;
+            height: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .line-number-div-item {
+                height: 10px;
+                width: 10px;
+                border-radius: 50%;
+                &:nth-of-type(1) {
+                    background-color: #ff5f57;
+                }
+                &:nth-of-type(2) {
+                    background-color: #ffbd2e;
+                }
+                &:nth-of-type(3) {
+                    background-color: #27c93f;
+                }
+            }
+        }
+        code {
+            flex: 1;
+            padding-left: 10px;
+            display: block;
+            border-radius: 5px;
+            font-size: 16px;
+            line-height: 30px;
+            padding-top: 40px;
+            .copy-button {
+                position: absolute;
+                right: 10px;
+                top: 15px;
+                padding: 3px 5px;
+                background-color: #666;
+                color: #fff;
+                border-radius: 3px;
+                cursor: pointer;
+            }
+
+            span {
+                line-height: 30px;
+            }
+        }
+    }
+
+    strong {
+        color: red;
+        font-weight: 500;
+    }
+}

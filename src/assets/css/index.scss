@@ -1,0 +1,20 @@
+@import './reset.scss';
+@import './common.scss';
+@import './constant.scss';
+@import './github.css';
+@import './my.scss';
+@import './edit_reset.scss';
+
+// 采用rem布局
+@import './media.scss';
+
+
+// 移动端单独样式
+@media screen and (min: 320px) and (max: 500px) {
+    @import './mob.scss';
+}
+
+// pc端单独样式
+@media screen and (min: 501px) {
+    @import './pc.scss';
+}

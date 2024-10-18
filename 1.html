@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+
+        .default-img {
+            width: 300px;
+        }
+
+        img {
+            height: 150px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.9/vue.min.js"></script>
+    <script src="https://image.zlketang.com/public/news/others/js/element-ui.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/localforage/1.10.0/localforage.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <img :src="img1" alt="">
+    </div>
+</body>
+
+<script>
+    new Vue({
+        el: "#app",
+        components: {},
+        data() {
+            return {
+                img1: '',
+                img2: '',
+                img3: '',
+                img4: '',
+                aaa: '',
+                indexDBJS: null,
+                indexDBIMJ: null,
+                loadList: [
+                    {
+                        js: 'https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.js'
+                    },
+                    {
+                        js: 'https://cdn.bootcdn.net/ajax/libs/gsap/3.12.2/gsap.min.js'
+                    },
+                    {
+                        js: 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/ScrollTrigger.min.js'
+                    }
+                ],
+                imgUrl: ''
+            };
+        },
+        created() {
+            // 连接js表
+            this.indexDBJS = localforage.createInstance({
+                // 数据库名
+                name: "kl-db",
+                // 表名
+                storeName: 'js-table'
+            });
+
+            // 连接图片资源表
+            this.indexDBIMJ = localforage.createInstance({
+                // 数据库名
+                name: "kl-db",
+                // 表名
+                storeName: 'img-table'
+            });
+
+            this.init()
+
+            let imgs = {
+                img1: 'https://pic3.zhimg.com/80/v2-d8e1c695f6f11a6ba6e1d9c465a541c6_1440w.webp',
+                }
+            this.getindexDBIMJ(imgs, this.indexDBIMJ)
+
+        },
+        methods: {
+            // 页面业务入口
+            begin() {
+
+            },
+            // 初始化
+            async init() {
+                let { loadList } = this
+                this.loadToIndexDB(loadList, this.indexDBJS).then(res => {
+                    this.begin()
+
+                }).catch(err => { })
+            },
+            // 从indexDB中获取图片
+            async getindexDBIMJ(imgs, localforage) {
+                // 将blob对象转换为base64
+                function blobToBase64(blobFile) {
+                    return new Promise((resolve, reject) => {
+                        const reader = new FileReader();
+                        reader.readAsDataURL(blobFile);
+                        reader.onload = (e) => {
+                            const res = e.target.result;
+                            resolve(res)
+                        }
+
+                        reader.onerror = (e) => {
+                            reject(e)
+                        }
+                    })
+                }
+
+                let imgsArr = Object.keys(imgs)
+                imgsArr.forEach(async (item) => {
+                    const url = imgs[item]
+                    let res = await localforage.getItem(url)
+                    if (res) {
+                        this[item] = res
+                        return
+                    }
+                    this[item] = url
+                    fetch(url).then(response => response.blob()).then(async res => {
+                        try {
+                            let file = await blobToBase64(res)
+                            localforage.setItem(url, file)
+                        } catch (e) { }
+                    })
+                })
+            },
+
+            /**
+             * 封装一个动态加载js，并会将请求回来的文件保存到indexDB中的方法
+             * arr 需要动态加载的文件数组 示例 [{js:'aaa.js',isAppendHead:true},{css:'aaa.css'}]
+             */
+            loadToIndexDB(arr, localforage) {
+                // 将blob对象转换为base64
+                function blobToBase64(blobFile) {
+                    return new Promise((resolve, reject) => {
+                        const reader = new FileReader();
+                        reader.readAsDataURL(blobFile);
+                        reader.onload = (e) => {
+                            const res = e.target.result;
+                            resolve(res)
+                        }
+
+                        reader.onerror = (e) => {
+                            reject(e)
+                        }
+                    })
+                }
+
+                // 将文件注入到页面 type: js/css
+                function loadScript(url, row) {
+                    let { isAppendHead = false, js, css } = row
+                    let type = css ? 'css' : 'js'
+                    if (!url) {
+                        return Promise.reject("failed");
+                    }
+                    // 防止重复加载
+                    if ((type === 'js' && document.querySelector(`script[src="url"]`)) || (type === 'css' && document.querySelector(`link[href="url"]`))) {
+                        return Promise.resolve("successful");
+                    }
+
+                    return new Promise((resolve, reject) => {
+                        let scriptDom = ''
+                        if (type === 'js') {
+                            scriptDom = document.createElement("script");
+                            scriptDom.setAttribute("src", url);
+                            scriptDom.setAttribute("type", "text/javascript");
+                        }
+
+                        if (type === 'css') {
+                            scriptDom = document.createElement("link");
+                            scriptDom.setAttribute("href", url);
+                            scriptDom.setAttribute("rel", "stylesheet");
+                        }
+                        document[isAppendHead ? "head" : "body"].appendChild(scriptDom);
+                        scriptDom.onload = () => {
+                            resolve("successful");
+                        };
+                        scriptDom.onerror = () => {
+                            console.log('加载失败', row);
+                            resolve("failed");
+                        };
+                    });
+                }
+                let arr1 = []
+                arr.forEach(element => {
+                    let url = element.js ? element.js : element.css
+                    arr1.push(localforage.getItem(url).then(async res => {
+                        if (res) {
+                            await loadScript(res, element)
+                            return res
+                        }
+                        await loadScript(url, element)
+                        fetch(url).then(response => response.blob()).then(async res => {
+                            try {
+                                let file = await blobToBase64(res)
+                                // 保存
+                                localforage.setItem(url, file)
+                            } catch (err) {
+                                return false
+                            }
+
+                        }).catch((err) => {
+                            return false
+                        })
+                    }).catch((err) => {
+                        console.log('getData-err', err);
+                    }))
+
+                });
+                return Promise.all(arr1)
+            },
+        },
+    });
+</script>
+
+</html>

@@ -1,0 +1,19 @@
+@media screen and (max-width: 414px) {
+    html {
+      font-size: 13.3334vw !important;
+      color: #666;
+    }
+    body {
+      font-size: 16px;
+    }
+  }
+  
+  @media screen and (min-width: 415px) {
+    html {
+      font-size: 625% !important;
+      color: #666;
+    }
+    body {
+      font-size: 16px;
+    }
+  }

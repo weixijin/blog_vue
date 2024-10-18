@@ -1,0 +1,436 @@
+/* csslint disabled        */
+
+[v-cloak] {
+    display: none;
+}
+
+#app {
+    height: 100vh;
+    width: 100vw;
+    // overflow: auto;
+    color: #333;
+}
+
+html {
+    font-family: PingFangSC-Medium, PingFang SC;
+}
+
+body,
+div,
+ul,
+ol,
+li,
+input,
+button,
+textarea,
+p {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+li,
+ol {
+    list-style: none;
+}
+
+/* 关闭字体大小调整功能        */
+
+a {
+    text-decoration: none;
+}
+
+/* 去掉input默认样式        */
+
+input,
+textarea {
+    background: none;
+    border: none;
+    box-shadow: none;
+    outline: none;
+}
+
+// input:focus,
+// textarea:focus {
+//     border: none;
+// }
+
+button {
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
+
+img[src=''],
+img:not([src]) {
+    opacity: 0;
+}
+
+/* flex  布局                                                                                                                                                                                */
+.flex-wrap,
+.flex-column-wrap,
+.flex-center-wrap,
+.flex-bottom-wrap,
+.flex-multi-row,
+.flex-center {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+}
+
+/* 多行flex布局                                                                                                                                                                                                 */
+
+.flex-multi-row {
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+/* 元素默认竖直居中                                                                                                                                                                      */
+
+.flex-item-wrap {
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+}
+
+.flex-center-wrap {
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+/*水平垂直居中                                                                                              */
+
+.flex-center {
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+/* 元素底部对齐                                                                                                                                                                      */
+
+.flex-bottom-wrap {
+    -webkit-align-items: flex-end;
+    align-items: flex-end;
+}
+
+.flex-justify-center {
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+/* 从行尾位置开始排列                                                                                                                                                              */
+
+.flex-justify-end {
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end;
+}
+
+.flex-justify-around {
+    -webkit-justify-content: space-around;
+    justify-content: space-around;
+}
+
+.flex-justify-between {
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+}
+
+.flex-justify-start {
+    justify-content: flex-start;
+}
+
+.flex {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+}
+.flex-0{
+    flex-shrink: 0;
+}
+
+.flex-column-wrap {
+    -webkit-box-orient: vertical;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+}
+
+.flex-center-end {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+/*水平和垂直水平居中                                                                                                                                                                                 */
+
+.vertical-center {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.screen-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+/*//单行省略                                                                                              */
+
+.ell {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ell-1 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}
+
+/*//几行省略                                                                                              */
+
+.ell-2 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+.ell-3 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+}
+.ell-4 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+}
+
+// vue 的过渡动画
+.fade-enter-active,
+.fade-leave-active {
+    opacity: 1;
+}
+
+.fade-enter,
+.fade-leave {
+    opacity: 0;
+    transition: all 0.1s;
+}
+
+// 大背景底色
+.common_bck,
+.common-bg {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+// 遮挡公共底色
+.common_bck_1,
+.common-bg-1 {
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 1px 2px 6px rgb(63 74 105 / 16%);
+    border-radius: 3px;
+}
+
+.common-bg-2 {
+    background-color: #f5f5f5;
+}
+.bg-F7F8FA{
+    background-color: #f7f8fa;
+}
+
+.scroll-better {
+    overflow-y: auto;
+}
+.better-scroll {
+    // 解决部分ios手机滑动卡顿问题
+    -webkit-overflow-scrolling: touch;
+}
+
+.c-primary {
+    color: $primary;
+}
+.c-success {
+    color: $success;
+}
+.c-warning {
+    color: $warning;
+}
+.c-danger {
+    color: $danger;
+}
+.bg-primary {
+    background-color: $primary;
+}
+.bg-success {
+    background-color: $success;
+}
+.bg-warning {
+    background-color: $warning;
+}
+.bg-danger {
+    background-color: $danger;
+}
+.cu {
+    cursor: pointer;
+}
+
+.kl-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 35px;
+    padding: 0 15px;
+    border-radius: 3px;
+    background-color: $primary;
+    color: #fff;
+    white-space: nowrap;
+}
+.kl-button-30 {
+    height: 30px;
+    font-size: 14px;
+}
+
+.common-cover {
+    height: 100vh;
+    padding-top: 80px;
+}
+.common-scroll {
+    height: calc(100vh - 80px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+}
+.page-center {
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.kl-input-emoji-icon {
+    display: inline-block !important;
+    width: 20px;
+    height: 20px;
+    vertical-align: sub;
+    margin: 0 2px;
+}
+
+.top-content-info {
+    img {
+        max-width: 100%;
+        max-height: 350px;
+    }
+}
+.kl-input-cover {
+    p {
+        img {
+            max-width: 100%;
+        }
+    }
+}
+
+.c-white {
+    fill: $c-white !important;
+}
+
+.search-height-light-class {
+    color: $danger !important;
+}
+
+.active-ctrl-mo-bg {
+    color: $warning;
+}
+.nowrap {
+    white-space: nowrap;
+}
+
+.kl-loading-bg {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+.kl-loading-main {
+    color: #fff;
+    font-size: 20px;
+}
+
+@keyframes dialog-fade-in {
+    0% {
+        transform: translate3d(0, -50px, 0);
+        opacity: 0;
+    }
+    100% {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+}
+@keyframes dialog-fade-out {
+    0% {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate3d(0, 50px, 0);
+        opacity: 0;
+    }
+}
+
+.zl-dialog-main{
+    padding: 20px 0 0 20px;
+}
+
+
+.slide-left-enter-active,
+.slide-left-leave-active {
+    transition: all .3s ease;
+}
+
+.slide-left-enter {
+    opacity: 0;
+    transform: translateX(100vw);
+}
+
+.slide-left-leave-to {
+    opacity: 0;
+    transform: translateX(-100vw);
+}
+
+
+.slide-right-enter-active,
+.slide-right-leave-active {
+    transition: all .3s ease;
+}
+
+.slide-right-enter {
+    opacity: 0;
+    transform: translateX(-100vw);
+}
+
+.slide-right-leave-to {
+    opacity: 0;
+    transform: translateX(100vw);
+}
+
+
+  
+
+
