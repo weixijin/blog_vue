@@ -1,0 +1,1 @@
+import{n as o}from"./index.25833e42.js";var s=function(){var t=this,e=t.$createElement,r=t._self._c||e;return r("div",{staticClass:"demo"},[t._v("kl-edit")])},a=[];const _={components:{},data(){return{}},methods:{}},n={};var c=o(_,s,a,!1,l,null,null,null);function l(t){for(let e in n)this[e]=n[e]}var u=function(){return c.exports}();export{u as default};

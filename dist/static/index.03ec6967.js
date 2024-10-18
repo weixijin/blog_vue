@@ -1,0 +1,1 @@
+import{n as o}from"./index.25833e42.js";var s=function(){var n=this,e=n.$createElement,r=n._self._c||e;return r("router-view")},_=[];const a={components:{},data(){return{}}},t={};var c=o(a,s,_,!1,l,null,null,null);function l(n){for(let e in t)this[e]=t[e]}var i=function(){return c.exports}();export{i as default};
